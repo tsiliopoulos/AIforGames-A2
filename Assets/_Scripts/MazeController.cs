@@ -15,8 +15,9 @@ public class MazeController : MonoBehaviour
 
   public List<Text> tileCounters;
 
+  public GameObject player;
 
-    void Start()
+  void Start()
     {
 
     buildGrid();
@@ -27,18 +28,23 @@ public class MazeController : MonoBehaviour
 
     void Update()
     {
+        // show stats
        if(Input.GetKeyDown(KeyCode.BackQuote))
-      {
-        if(!statsPanel.activeInHierarchy)
-        {
-        statsPanel.SetActive(true);
-        }
-        else
-        {
-        statsPanel.SetActive(false);
-        }
-        
-      }
+       {
+           statsPanel.SetActive(!statsPanel.activeInHierarchy);
+       }
+
+       // quit the game
+       if (Input.GetKeyDown(KeyCode.Escape))
+       {
+           Application.Quit();
+       }
+
+       // reset with new Tile Positions
+       if (Input.GetKeyDown(KeyCode.R))
+       {
+           resetAll();
+       }
     }
 
 
@@ -83,6 +89,26 @@ public class MazeController : MonoBehaviour
       grid.RemoveAt(randomGridIndex);
       Instantiate(tile, position, Quaternion.identity).transform.parent = tilesContainer;
     }
+  }
+
+  void removeAllChildren()
+  {
+      foreach (Transform child in tilesContainer)
+      {
+          Destroy(child.gameObject);
+      }
+
+      
+  }
+
+  void resetAll()
+  {
+      player.GetComponent<CharacterController>().enabled = false;
+      player.transform.position = new Vector3(16.0f, 19.0f, 1.6f);
+      player.GetComponent<CharacterController>().enabled = true;
+        removeAllChildren();
+      buildGrid();
+      randomlyPlaceTiles();
   }
 
 
