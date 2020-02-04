@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d9f4e764c5644b88b6da4fe59778035, type: 3}
+  m_Name: Door2
+  m_EditorClassIdentifier: 
+  Hot: 1
+  Noisy: 1
+  Safe: 0
+  Probability: 0.3
+  tile: {fileID: 5175152860673143889, guid: 62f0cd82bacaa42848cb97c8746e33ad, type: 3}
